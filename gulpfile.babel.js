@@ -58,8 +58,6 @@ gulp.task('stylus', function() {
         .pipe(gulp.dest('dist/css'))
 })
 
-
-
 /* @gulp: watch */
 gulp.task('watch', () => {
 	gulp.watch('src/template/main.pug', ['dist'])

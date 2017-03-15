@@ -19,24 +19,30 @@ const options = {
             use: [{
             	loader: 'babel-loader',
             	options: {
-	                presets: ['es2015', 'stage-2'],
-	            }
+                    presets: ['es2015', 'stage-2'],
+                }
             }]
-        }, {
-        	test: /\.styl$/,
-        	exclude: [/node_modules/, /dist/],
-        	use:[
-        		"style-loader",
-        		"css-loader",
-        		"stylus-loader"
-        	]
+        },{
+            test: /\.styl$/,
+            exclude: [/node_modules/, /dist/],
+            use:[
+                 "style-loader",
+                 "css-loader",
+                 "stylus-loader"
+            ]
         },{
             test: /\.pug?$/,
             exclude: [/node_modules/, /dist/],
             loader: 'pug-html'
-        }
-        ]
+        }]
     },
+    resolve: {
+        modules: [
+            path.join(__dirname, 'src'),
+            'node_modules'
+        ],
+        extensions: ['.js', '.jsx', '.styl']
+    }
 }
 
 export default options
