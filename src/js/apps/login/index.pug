@@ -1,0 +1,17 @@
+div(:title="title")
+
+	.wrapper-welcome 
+		.login-label E-mail:
+		input(placeholder='login@mail.ru', maxlength="100", v-model="email").login-input
+
+		.login-label Password:
+		input(placeholder='8 symbols', maxlength="100", v-model="password").login-input
+
+		button(type="button", @click="signIn()").login-button Enter
+
+		button(type="button", @click="createUser()").login-button Create User
+
+		div {{email}} 
+		div {{password}}
+
+

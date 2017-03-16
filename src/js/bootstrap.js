@@ -1,12 +1,26 @@
 import firebaseConfig from './firebaseConfig'
+import firebase from 'firebase'
+import AuthProvider from './libs/auth.js'
 
-var a = 4;
+/*Init firebase*/
+firebase.initializeApp(firebaseConfig)
 
-var r = 4;
 
-document.getElementById('app').classList.add('border')
+const Auth = new AuthProvider();
 
-console.log(firebaseConfig)
+
+/** Boot up */
+Auth.getUser().then(user => {
+    System.import('./apps/main/index.js')
+        .then(App => App.default(user));
+}, error => {
+    System.import('./apps/login/index.js')
+        .then(App => App.default(error));
+});
+
+
+
+
 
 
 //Здесь 2 приложения. Если удалось получить пользователя, то грузим приложение со списком дел, если нет, то грузим страницу регистрации/входа

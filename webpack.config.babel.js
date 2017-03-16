@@ -33,7 +33,7 @@ const options = {
         },{
             test: /\.pug?$/,
             exclude: [/node_modules/, /dist/],
-            loader: 'pug-html'
+            loader: ['raw-loader', 'pug-html-loader']
         }]
     },
     resolve: {
@@ -41,8 +41,24 @@ const options = {
             path.join(__dirname, 'src'),
             'node_modules'
         ],
-        extensions: ['.js', '.jsx', '.styl']
-    }
+        extensions: ['.js', '.pug', '.styl'],
+        alias: {
+          'vue$': 'vue/dist/vue.js',
+          'vue-router$': 'vue-router/dist/vue-router.common.js',
+          'vuex$': 'vuex/dist/vuex.js',
+        }
+    },
+
+    plugins: [
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+                FB_API_KEY: JSON.stringify(process.env.FB_API_KEY),
+                FB_API_SENDER: JSON.stringify(process.env.FB_API_SENDER),
+            },
+        })
+    ]
 }
 
 export default options
