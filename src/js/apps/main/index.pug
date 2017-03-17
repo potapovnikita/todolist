@@ -1,1 +1,11 @@
-button(type="button", @click="signOut()").login-button Exit
+.welcome-wrapper Hi {{email}}
+	.todo Here is User todo list
+	input(v-model="newTodo", placeholder='Enter your todo', maxlength="100").todo-input
+	button(type="button", @click="addTodoItem").button-todo-add Add Todo
+
+	//- .todo-list(v-for="(item, index) of todos")
+	//- 	.todo-item {{item.title}}
+
+	
+	button(type="button", @click="signOut").login-button Exit
+

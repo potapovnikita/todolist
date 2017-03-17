@@ -2,24 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import view from './index.pug'
 import AuthProvider from './../../libs/auth.js'
+import store from './../../store/index.js'
+import { mapActions, mapGetters } from 'vuex'
 
-Vue.use(Vuex)
+console.log(store)
 
 export default (user) => {
-
-
+	Vue.use(Vuex)
 	console.log('Вы вошли:', user)
-
-	// const store = new Vuex.Store({
-	// 	state: {
-	// 		count: 0
-	// 	},
-	// 	mutations: {
-	// 		increment (state) {
-	// 			state.count++
-	// 		}
-	// 	}
-	// })
 
 	const app = new Vue({
 		el: '#app',
@@ -27,14 +17,39 @@ export default (user) => {
 		data() {
 			return {
 				title: 'ToDo App',
-
+				email: user.email,
+				newTodo: ''
 			}
 		},
+		store,
 		methods: {
-			signOut(){
-				this.Auth = new AuthProvider();
-				this.Auth.signOut();
+			...mapActions(['getUser', 'signOut','addTodo', 'getTodos']),
+			addTodoItem(){
+				this.addTodo({
+					userId: this.$store.state.user.uid,
+					todo: {title: this.newTodo, date: new Date()}
+				})
+				this.newTodo = ''
 			}
+		},
+		computed: {
+			...mapGetters(['user'])
+		},
+		beforeMount() {
+			this.getUser()
+
+			//let _this = this
+			// this.$store.subscribe(function(mutation, state) {
+			// 	switch (mutation.type) {
+			// 		case 'setUser':
+			// 		state.user.uid ? _this.getTodos(state.user.uid) : _this.loading = false
+			// 		break
+			// 		case 'setTodos':
+			// 		_this.loading = false
+			// 		break
+			// 	}
+			// })
 		}
+
 	})
 }

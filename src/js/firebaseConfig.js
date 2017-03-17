@@ -1,9 +1,9 @@
 const firebaseConfig = {
-	apiKey: process.env.FB_API_KEY || 'AIzaSyDtZbDczy02jMBs4GUN_kgZdC_FfADz-XY',
-    authDomain: "todo-app-8f3e4.firebaseapp.com",
-    databaseURL: "https://todo-app-8f3e4.firebaseio.com",
-    storageBucket: "todo-app-8f3e4.appspot.com",
-    messagingSenderId: process.env.FB_API_SENDER || '592037573175'
+    apiKey: "AIzaSyBvDWCiH4btsox0H7gNz3WOvbYlRGpPHtY",
+    authDomain: "todoapp-b76fd.firebaseapp.com",
+    databaseURL: "https://todoapp-b76fd.firebaseio.com",
+    storageBucket: "todoapp-b76fd.appspot.com",
+    messagingSenderId: "963996594657"
 }
 
 export default firebaseConfig

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import view from './index.pug'
 import AuthProvider from './../../libs/auth.js'
+import VueRouter from 'vue-router'
 
 Vue.use(Vuex)
 
@@ -15,6 +16,7 @@ export default (args) => {
 		template: view,
 		data() {
 			return {
+				auth: new AuthProvider(),
 				title: 'ToDo App',
 				email: '',
 				password: ''
@@ -23,13 +25,14 @@ export default (args) => {
 		methods: {
 			signIn(){
 				const authData = { email: this.email, password: this.password}
-				this.Auth = new AuthProvider();
-				this.Auth.signIn(authData);
+				this.auth.signIn(authData)
+					.then(user => window.location.href = '/')
+
 			},
 			createUser(){
 				const authData = { email: this.email, password: this.password}
-				this.Auth = new AuthProvider();
-				this.Auth.createUser(authData);
+				this.auth.createUser(authData)
+					.then(user => window.location.href = '/')
 			}
 		}
 	})

@@ -28,7 +28,7 @@ export default class Auth {
 		})
 	}
 
-	createUser(authData = {}, redirect = '/') {
+	createUser(authData = {}) {
 		return new Promise((resolve, reject) => {
 			this.db.auth().createUserWithEmailAndPassword(authData.email, authData.password)
 				.then(user => {
@@ -41,7 +41,7 @@ export default class Auth {
 		})
 	}
 
-	signIn(authData = {}, redirect = '/') {
+	signIn(authData = {}) {
 		return new Promise((resolve, reject) => {
 			this.db.auth().signInWithEmailAndPassword(authData.email, authData.password)
 				.then(user => {
@@ -51,11 +51,12 @@ export default class Auth {
 				.catch(error => {
 					reject(error)
 				})
+
 		})
 	}
 
 	signOut() {
-		return new Promise((resole, reject) => {
+		return new Promise((resolve, reject) => {
 			this.db.auth().signOut()
 				.then(() => {
 					this.setUser()
