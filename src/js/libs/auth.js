@@ -55,6 +55,21 @@ export default class Auth {
 		})
 	}
 
+	signInGoogle(){
+		var provider = new firebase.auth.GoogleAuthProvider();
+		return new Promise((resolve, reject) => {
+			this.db.auth().signInWithPopup(provider)
+				.then(user => {
+					this.setUser(user)
+					resolve(this.user)
+				})
+				.catch(error => {
+					reject(error)
+				})
+
+		})
+	}
+
 	signOut() {
 		return new Promise((resolve, reject) => {
 			this.db.auth().signOut()

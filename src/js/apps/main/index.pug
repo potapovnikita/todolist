@@ -1,11 +1,33 @@
-.welcome-wrapper Hi {{email}}
-	.todo Here is User todo list
-	input(v-model="newTodo", placeholder='Enter your todo', maxlength="100").todo-input
-	button(type="button", @click="addTodoItem").button-todo-add Add Todo
+.wrapper
+	UserProfile(:email="email", :photoURL="photoURL")
+	
 
-	//- .todo-list(v-for="(item, index) of todos")
-	//- 	.todo-item {{item.title}}
+	.todo_panel
+		input(v-model="newTodo", placeholder='Enter your todo', maxlength="100", @keyup.enter="addTodoItem").todo-input
+		button(type="button", @click="addTodoItem").button-todo-add Add Todo
+
+	.todo-list(v-cloak)
+		button(type="button", @click="selectAllTodos(todos)") Select all, as completed
+		button(type="button", @click="deleteAllCompleteTodos(todos)") Delete completed todos
+		h3 Active
+		.todo-item(v-for="(item, index) in todos" v-if="!item.complete")
+			.view
+				input(type="checkbox", @click="changeStatusTodoItem(item)")
+				.todo-item-caption(@dblclick="openEditTodo(index)") {{item.title}}
+				.fa.fa-trash-o.todo-item-delete(@click="deleteTodoItem(item)") &nbsp;Delete
+			input(maxlength="100", :value="item.title", @input="editedTodo", @blur="editTodoItem(item, index)", @keyup.enter="editTodoItem(item, index)", :id="'input-edit-' + index").todo-input-edit
+
+		p.help Double-click to edit a todo
+		
+		h3 Completed
+		.todo-item.todo-item-comleted(v-for="(item, index) in todos" v-if="item.complete")
+			input(type="checkbox", @click="changeStatusTodoItem(item)" checked)
+			.todo-item-caption {{item.title}}
+			.fa.fa-trash-o.todo-item-delete(@click="deleteTodoItem(item)") &nbsp;Delete
+
+
+
 
 	
-	button(type="button", @click="signOut").login-button Exit
+	
 

@@ -7,8 +7,7 @@ import VueRouter from 'vue-router'
 Vue.use(Vuex)
 
 export default (args) => {
-
-
+	
 	console.log(args)
 
 	const app = new Vue({
@@ -29,6 +28,12 @@ export default (args) => {
 					.then(user => window.location.href = '/')
 
 			},
+			signInGoogle(){
+				this.auth.signInGoogle()
+					.then(user => window.location.href = '/')
+
+			},
+
 			createUser(){
 				const authData = { email: this.email, password: this.password}
 				this.auth.createUser(authData)

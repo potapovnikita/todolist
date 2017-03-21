@@ -15,20 +15,26 @@ export function signOut({commit}) {
 }
 
 export function addTodo({commit}, payload) {
-	
-	console.log({commit})
-	console.log(payload)
-
-
 	const newKey = firebase.database().ref(`/users/${payload.userId}/`).child('todos').push().key
 	payload.todo.id = newKey
-	console.log(newKey)
 	firebase.database().ref(`/users/${payload.userId}/`).update({[`/todos/${newKey}`]: payload.todo})
 }
 
+export function getTodos({commit}, userId) {
+	firebase.database().ref(`/users/${userId}/todos`).on('value', snap => {
+		commit(actions.SET_TODOS, snap.val() || [])
+	})
+}
 
-// export function getTodos({commit}, userId) {
-// 	firebase.database().ref('/users/${userId}/todos').on('value', snap => {
-// 		commit(actions.SET_TODOS, snap.val() || [])
-// 	})
-// }
+export function deleteTodo({commit}, payload) {
+	firebase.database().ref(`/users/${payload.userId}/`).update({[`/todos/${payload.todo.id}`]: null})
+}
+
+export function changeStatusTodo({commit}, payload) {
+	firebase.database().ref(`/users/${payload.userId}/`).update({[`/todos/${payload.todo.id}`]: payload.todo})
+}
+
+export function editTodo({commit}, payload){
+	firebase.database().ref(`/users/${payload.userId}/`).update({[`/todos/${payload.todo.id}`]: payload.todo})
+}
+

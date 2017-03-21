@@ -12,8 +12,8 @@ export default new Vuex.Store({
 		todos:[],
 	},
 	getters: {
-		user: state => ({ ...state.user })
-		//todos: state => ({ ...state.todos })
+		user: state => ({ ...state.user }),
+		todos: state => ({ ...state.todos })
 	},
 	mutations,
 	actions
