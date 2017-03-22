@@ -6,8 +6,5 @@ export default {
 	props: ['email', 'photoURL'],
 	methods:{
 		...mapActions(['signOut'])
-	},
-	beforeMount() {
-		console.log(this)
 	}
 }

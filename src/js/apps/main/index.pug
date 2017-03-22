@@ -1,14 +1,9 @@
 .wrapper
 	UserProfile(:email="email", :photoURL="photoURL")
+	TodoPanel
 	
 
-	.todo_panel
-		input(v-model="newTodo", placeholder='Enter your todo', maxlength="100", @keyup.enter="addTodoItem").todo-input
-		button(type="button", @click="addTodoItem").button-todo-add Add Todo
-
 	.todo-list(v-cloak)
-		button(type="button", @click="selectAllTodos(todos)") Select all, as completed
-		button(type="button", @click="deleteAllCompleteTodos(todos)") Delete completed todos
 		h3 Active
 		.todo-item(v-for="(item, index) in todos" v-if="!item.complete")
 			.view

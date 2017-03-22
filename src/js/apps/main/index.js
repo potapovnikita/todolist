@@ -5,11 +5,13 @@ import AuthProvider from './../../libs/auth.js'
 import store from './../../store/index.js'
 import {mapActions, mapGetters} from 'vuex'
 import UserProfile from './../../components/UserProfile/' 
+import TodoPanel from './../../components/TodoPanel/' 
 
 export default (user) => {
 	console.log(user)
 	Vue.use(Vuex)
 	Vue.component('UserProfile', UserProfile)
+	Vue.component('TodoPanel', TodoPanel)
 
 	const app = new Vue({
 		el: '#app',
@@ -25,14 +27,7 @@ export default (user) => {
 		},
 		store,
 		methods: {
-			...mapActions(['getUser','addTodo', 'deleteTodo', 'getTodos', 'changeStatusTodo', 'checkedAll', 'editTodo']),
-			addTodoItem(){
-				this.addTodo({
-					userId: this.$store.state.user.uid,
-					todo: {title: this.newTodo, date: new Date(), complete: false}
-				})
-				this.newTodo = ''
-			},
+			...mapActions(['getUser', 'deleteTodo', 'getTodos', 'changeStatusTodo', 'editTodo']),
 			deleteTodoItem(item){
 				this.deleteTodo({
 					userId: this.$store.state.user.uid,
@@ -44,24 +39,6 @@ export default (user) => {
 					userId: this.$store.state.user.uid,
 					todo: Object.assign({}, item, {complete: !item.complete})
 				})
-			},
-			selectAllTodos(items){
-				for (let key in items){
-					this.changeStatusTodo({
-						userId: this.$store.state.user.uid,
-						todo: Object.assign({},items[key], {complete: true})
-					})
-				}
-			},
-			deleteAllCompleteTodos(items){
-				for (let key in items){
-					if (items[key].complete) {
-						this.deleteTodo({
-							userId: this.$store.state.user.uid,
-							todo: items[key]
-						})
-					}
-				}
 			},
 			editTodoItem(item, index){
 				if(this.editedTodoTitle !== ''){
