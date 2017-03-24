@@ -6,9 +6,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(Vuex)
 
-export default (args) => {
-	
-	console.log(args)
+export default () => {
 
 	const app = new Vue({
 		el: '#app',

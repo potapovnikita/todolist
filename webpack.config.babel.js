@@ -46,6 +46,7 @@ const options = {
           'vue$': 'vue/dist/vue.js',
           'vue-router$': 'vue-router/dist/vue-router.common.js',
           'vuex$': 'vuex/dist/vuex.js',
+          'img': path.resolve('./src/assets/img/')
         }
     },
 

@@ -1,0 +1,6 @@
+.user-panel
+	.user-profile
+		.user-profile-name {{user.displayName ? user.displayName : user.email}}
+		img.user-profile-photo(:src="user.photoURL ? user.photoURL : '../img/user.png'")
+	.user-button-exit
+		button(type="button", @click="signOut") Exit

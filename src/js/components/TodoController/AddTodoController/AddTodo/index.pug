@@ -1,0 +1,3 @@
+.add-todo-panel
+	input(:value="newTodo", v-on:input="updateValue($event.target.value)", placeholder='Enter your todo', maxlength="100", @keyup.enter="addTodoItem").todo-input
+	button(type="button", @click="addTodoItem").button-todo-add Add Todo
