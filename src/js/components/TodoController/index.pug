@@ -1,25 +1,4 @@
 .todo-container
-	.todo-panel
 	AddTodoController
-
-		//-todo ListTodoController
-	.todo-panel-navigate
-		button(type="button", @click="selectAllTodos(todos)") Select all, as completed
-		button(type="button", @click="deleteAllCompleteTodos(todos)") Clear completed
-
-	.todo-list(v-cloak)
-		h3 Active
-		.todo-item(v-for="(item, index) in todos" v-if="!item.complete")
-			.view
-				input(type="checkbox", @click="changeStatusTodoItem(item)")
-				.todo-item-caption(@dblclick="openEditTodo(index)") {{item.title}}
-				.fa.fa-trash-o.todo-item-delete(@click="deleteTodoItem(item)") &nbsp;Delete
-			input(maxlength="100", :value="item.title", @input="editedTodo", @blur="editTodoItem(item, index)", @keyup.enter="editTodoItem(item, index)", :id="'input-edit-' + index").todo-input-edit
-
-		p.help Double-click to edit a todo
-		
-		h3 Completed
-		.todo-item.todo-item-comleted(v-for="(item, index) in todos" v-if="item.complete")
-			input(type="checkbox", @click="changeStatusTodoItem(item)" checked)
-			.todo-item-caption {{item.title}}
-			.fa.fa-trash-o.todo-item-delete(@click="deleteTodoItem(item)") &nbsp;Delete
+	ListTodoController
+	
