@@ -1,9 +1,9 @@
-#Todo List App 
+# Todo List App 
 
 VueJS+Vuex
 
 
-##Details
+## Details
 
 Pug, stylus, gulp, webpack2
 
