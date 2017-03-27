@@ -5,5 +5,5 @@ import template from './index.pug'
 
 export default {
 	template,
-	props: ['selectAllTodos', 'deleteAllCompleteTodos', 'deleteTodoItem', 'changeStatusTodoItem', 'editTodoItem', 'editedTodo', 'openEditTodo', 'todos']
+	props: ['selectAllTodos', 'deleteAllCompleteTodos', 'deleteTodoItem', 'changeStatusTodoItem', 'editTodoItem', 'editedTodo', 'openEditTodo', 'todos', 'loading']
 }

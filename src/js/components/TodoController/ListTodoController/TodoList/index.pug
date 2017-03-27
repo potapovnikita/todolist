@@ -5,6 +5,11 @@
 
 	.todo-list
 		h3 Active
+		.preloader(v-show="loading")
+				img(src="./preloader.gif").preloader-img
+
+
+
 		.todo-item(v-for="(item, index) in todos" v-if="!item.complete")
 			.view
 				input(type="checkbox", @click="changeStatusTodoItem(item)")
@@ -12,9 +17,13 @@
 				.fa.fa-trash-o.todo-item-delete(@click="deleteTodoItem(item)") &nbsp;Delete
 			input(maxlength="100", :value="item.title", @input="editedTodo", @blur="editTodoItem(item, index)", @keyup.enter="editTodoItem(item, index)", :id="'input-edit-' + index").todo-input-edit
 
-		p.help Double-click to edit a todo
+		p.help(v-show="!loading") Double-click to edit a todo
 		
 		h3 Completed
+
+		.preloader(v-show="loading")
+				img(src="./preloader.gif").preloader-img
+
 		.todo-item.todo-item-comleted(v-for="(item, index) in todos" v-if="item.complete")
 			input(type="checkbox", @click="changeStatusTodoItem(item)" checked)
 			.todo-item-caption {{item.title}}

@@ -8,6 +8,7 @@ VueJS+Vuex
 Pug, stylus, gulp, webpack2
 
 Auth: OAuth2 (Firebase)
+
 Database: Firebase Live Storage
 
 ## Installation

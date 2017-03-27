@@ -12,7 +12,7 @@ export default {
 	template,
 	data() {
 		return {
-			editedTodoTitle: ''
+			loading: true
 		}
 	},
 	methods:{

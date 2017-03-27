@@ -8,6 +8,7 @@ Vue.component('TodoList', TodoList)
 
 export default {
 	template,
+	props: ['loading'],
 	data() {
 		return {
 			editedTodoTitle: ''
