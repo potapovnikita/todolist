@@ -4,7 +4,7 @@ import path from 'path'
 const dev = process.env.NODE_ENV !== 'production';
 
 const options = {
-	devtool: dev ? 'source-map-eval' : null,
+	devtool: dev ? 'source-map-eval' : false,
     watch: dev,
 
     output: {
