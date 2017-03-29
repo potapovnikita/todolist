@@ -54,6 +54,7 @@ export default {
 				})
 			}
 			document.getElementById(`input-edit-${index}${attr}`).style.display = 'none'
+			this.editedTodoTitle = ''
 		},
 		editedTodo(e){
 			this.editedTodoTitle = e.target.value
