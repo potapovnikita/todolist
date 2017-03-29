@@ -16,7 +16,7 @@
 					:attr="uncompleted",
 					:preloader="preloader")
 		
-		p.help(v-show="!preloader") Double-click to edit a todo
+		p.help(v-show="!preloader && !uncompletedTodos.length == 0") Double-click to edit a todo
 
 		h3 Completed
 
