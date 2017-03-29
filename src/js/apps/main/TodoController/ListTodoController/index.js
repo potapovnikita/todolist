@@ -1,14 +1,14 @@
 import Vue from 'vue'
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapGetters, mapState} from 'vuex'
 import template from './index.pug'
 
-import TodoList from './TodoList/'
+import TodoList from './../../../../components/TodoList/'
 
 Vue.component('TodoList', TodoList)
 
 export default {
 	template,
-	props: ['loading'],
+	props: ['preloader'],
 	data() {
 		return {
 			editedTodoTitle: ''
@@ -46,25 +46,25 @@ export default {
 				todo: Object.assign({}, item, {complete: !item.complete})
 			})
 		},
-		editTodoItem(item, index){
+		editTodoItem(item, index, attr){
 			if(this.editedTodoTitle !== ''){
 				this.editTodo({
 					userId: this.$store.state.user.uid,
 					todo: Object.assign({}, item, {title: this.editedTodoTitle})
 				})
 			}
-			document.getElementById(`input-edit-${index}`).style.display = 'none'
+			document.getElementById(`input-edit-${index}${attr}`).style.display = 'none'
 		},
 		editedTodo(e){
 			this.editedTodoTitle = e.target.value
 		},
 
-		openEditTodo(index){
-			document.getElementById(`input-edit-${index}`).style.display = 'block'
-			document.getElementById(`input-edit-${index}`).focus()
+		openEditTodo(index, attr){
+			document.getElementById(`input-edit-${index}${attr}`).style.display = 'block'
+			document.getElementById(`input-edit-${index}${attr}`).focus()
 		}
 	},
 	computed: {
-		...mapGetters(['todos'])
+		...mapGetters(['todos', 'completedTodos', 'uncompletedTodos'])
 	}
 }

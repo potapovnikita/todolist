@@ -13,8 +13,15 @@ export default new Vuex.Store({
 	},
 	getters: {
 		user: state => ({ ...state.user }),
-		todos: state => ({ ...state.todos })
+		todos: state => ([ ...state.todos ]),
+		completedTodos: state => ([...state.todos].filter(function(key){
+			return key.complete == true;
+		})),
+		uncompletedTodos: state => ([...state.todos].filter(function(key){
+			return key.complete == false;
+		}))
 	},
 	mutations,
 	actions
 })
+

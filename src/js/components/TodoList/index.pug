@@ -1,0 +1,35 @@
+.todo-panel(v-cloak)
+	.todo-panel-navigate
+		button(type="button", @click="selectAllTodos(todos)") Select all, as completed
+		button(type="button", @click="deleteAllCompleteTodos(todos)") Clear completed
+
+	.todo-list
+		h3 Active
+		.preloader(v-show="preloader")
+			img(src="./preloader.gif").preloader-img
+		TodoSection(:deleteTodoItem="deleteTodoItem", 
+					:changeStatusTodoItem="changeStatusTodoItem", 
+					:editTodoItem="editTodoItem", 
+					:editedTodo="editedTodo", 
+					:openEditTodo="openEditTodo",
+					:todos="uncompletedTodos",
+					:attr="uncompleted",
+					:preloader="preloader")
+		
+		p.help(v-show="!preloader") Double-click to edit a todo
+
+		h3 Completed
+
+		.preloader(v-show="preloader")
+			img(src="./preloader.gif").preloader-img
+		TodoSection(:deleteTodoItem="deleteTodoItem", 
+					:changeStatusTodoItem="changeStatusTodoItem", 
+					:editTodoItem="editTodoItem", 
+					:editedTodo="editedTodo", 
+					:openEditTodo="openEditTodo",
+					:todos="completedTodos",
+					:attr="completed",
+					:preloader="preloader")
+
+
+		

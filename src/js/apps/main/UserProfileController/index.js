@@ -2,7 +2,7 @@
 
 import Vue from 'vue'
 import {mapActions, mapGetters, mapState} from 'vuex'
-import UserPanel from './UserPanel/' 
+import UserPanel from './../../../components/UserPanel/' 
 import template from './index.pug'
 
 Vue.component('UserPanel', UserPanel)

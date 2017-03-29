@@ -1,7 +1,7 @@
 import template from './index.pug'
 import Vue from 'vue'
 import {mapActions, mapGetters} from 'vuex'
-import AddTodo from './AddTodo/'
+import AddTodo from './../../../../components/AddTodo/'
 
 
 Vue.component('AddTodo', AddTodo)

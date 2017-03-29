@@ -4,8 +4,8 @@ import template from './index.pug'
 import AuthProvider from './../../libs/auth.js'
 import store from './../../store/index.js'
 import {mapActions, mapGetters} from 'vuex'
-import UserProfileController from './../../components/UserProfileController/' 
-import TodoController from './../../components/TodoController/' 
+import UserProfileController from './UserProfileController/' 
+import TodoController from './TodoController/' 
 
 export default () => {
 

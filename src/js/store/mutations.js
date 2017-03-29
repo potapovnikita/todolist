@@ -11,11 +11,6 @@ export default {
 	},
 
 	[actions.SET_TODOS](state, todos) {
-		let list = []
-		for (let key in todos) {
-			list.push(todos[key])
-		}
-		
-		state.todos = list
+		state.todos = Object.values(todos)
 	}
 }

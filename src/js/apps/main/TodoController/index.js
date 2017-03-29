@@ -12,7 +12,7 @@ export default {
 	template,
 	data() {
 		return {
-			loading: true
+			preloader: true
 		}
 	},
 	methods:{
@@ -24,10 +24,10 @@ export default {
 		this.$store.subscribe(function(mutation, state) {
 			switch (mutation.type) {
 				case 'setUser':
-				state.user.uid ? _this.getTodos(state.user.uid) : _this.loading = false
+				state.user.uid ? _this.getTodos(state.user.uid) : _this.preloader = false
 				break
 				case 'setTodos':
-				_this.loading = false
+				_this.preloader = false
 				break
 			}
 

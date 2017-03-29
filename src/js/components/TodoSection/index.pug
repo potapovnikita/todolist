@@ -1,0 +1,8 @@
+div 
+	.todo-item(v-for="(item, index) in todos", :class="{completed: item.complete }")
+		.view
+			input(type="checkbox", @click="changeStatusTodoItem(item)", :checked ="item.complete")
+			.todo-item-caption(@dblclick="openEditTodo(index, attr)") {{item.title}}
+			.fa.fa-trash-o.todo-item-delete(@click="deleteTodoItem(item)") &nbsp;Delete
+		input(maxlength="100", :value="item.title", @input="editedTodo", @blur="editTodoItem(item, index, attr)", @keyup.enter="editTodoItem(item, index, attr)", :id="'input-edit-' + index + attr").todo-input-edit 
+	p(v-show="todos.length == 0 && !preloader") Empty
