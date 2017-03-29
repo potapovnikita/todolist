@@ -4,9 +4,11 @@
   "description": "TodoList App (vue,vuex, vue-router, pug, stylus, gulp, webpack2)",
   "main": "index.js",
   "scripts": {
+    "dev": "gulp",
+    "dist": "gulp dist",
     "start": "node ./server.js",
-    "postinstall": "node_modules/.bin/gulp",
-    "test": "./node_modules/.bin/gulp test"
+    "postinstall": "npm run dist",
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
