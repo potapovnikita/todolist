@@ -2,6 +2,8 @@
 
 VueJS+Vuex
 
+## Demo 
+https://ancient-woodland-53344.herokuapp.com/
 
 ## Details
 
